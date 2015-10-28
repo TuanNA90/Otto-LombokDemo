@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Otto-LombokDemo</string>
+    <string name="bin_to_main">Bin To Main</string>
+    <string name="replace_value">Replace Value</string>
 </resources>
