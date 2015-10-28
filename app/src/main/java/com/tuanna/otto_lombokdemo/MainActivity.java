@@ -5,10 +5,51 @@
 package com.tuanna.otto_lombokdemo;
 
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ListView;
 
+import com.tuanna.otto_lombokdemo.adapter.ListWordAdapter;
+import com.tuanna.otto_lombokdemo.common.Word;
+
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ItemClick;
+import org.androidannotations.annotations.ViewById;
+
+import java.util.ArrayList;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends AppCompatActivity {
+    @ViewById(R.id.lvWord)
+    ListView lvWord;
+    @Bean
+    ListWordAdapter mAdapter;
 
+    private ArrayList<Word> mArrayList;
+    private Word mWord;
+
+    @AfterViews
+    void init() {
+        mArrayList = new ArrayList<>();
+        mAdapter.setArrayListWord(mArrayList);
+        lvWord.setAdapter(mAdapter);
+        setData();
+    }
+
+    private void setData() {
+        for (int i = 0; i < 10; i++) {
+            mWord = Word.builder()
+                    .id(i)
+                    .name("Wor " + i)
+                    .phonetic("This is Word " + i)
+                    .meaning("")
+                    .build();
+            mArrayList.add(mWord);
+        }
+        mAdapter.notifyDataSetChanged();
+    }
+
+    @ItemClick
+    void lvWordItemClicked(Word word){
+    }
 }
