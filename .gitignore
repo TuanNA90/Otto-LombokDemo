@@ -1,8 +1,25 @@
-.gradle
+# Built application files
+*.apk
+*.ap_
+
+# Files for the Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Gradle files
+.gradle/
+build/
+/*/build/
+
+# Local configuration file (sdk path, etc)
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
-.DS_Store
-/build
+*.DS_Store
 /captures
 *.iml
+
+# Log Files
+*.log
