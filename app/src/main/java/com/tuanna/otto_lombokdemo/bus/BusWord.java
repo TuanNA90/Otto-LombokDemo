@@ -6,8 +6,6 @@ package com.tuanna.otto_lombokdemo.bus;
 
 import com.tuanna.otto_lombokdemo.common.Word;
 
-import java.util.ArrayList;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -16,7 +14,7 @@ import lombok.Getter;
  * Created by tuanna on 28/10/2015.
  */
 @AllArgsConstructor(suppressConstructorProperties = true)
-public class BusArrayListWord {
+public class BusWord {
     @Getter
-    private ArrayList<Word> wordArrayList;
+    private Word word;
 }

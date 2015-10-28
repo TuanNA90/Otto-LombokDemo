@@ -5,11 +5,14 @@
 package com.tuanna.otto_lombokdemo;
 
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
+import com.squareup.otto.Subscribe;
 import com.tuanna.otto_lombokdemo.adapter.ListWordAdapter;
 import com.tuanna.otto_lombokdemo.bus.BusProvider;
+import com.tuanna.otto_lombokdemo.bus.BusWord;
 import com.tuanna.otto_lombokdemo.common.Word;
 
 import org.androidannotations.annotations.AfterViews;
@@ -34,10 +37,12 @@ public class ReplaceValueFragment extends Fragment {
     ListView lvWord;
 
     private ArrayList<Word> mArrayList;
-    private String[] mStrings;
+    private String[] mArrWord;
+    private Word mWord;
 
     @AfterViews
     void init() {
+        mArrWord = getActivity().getResources().getStringArray(R.array.arrWords);
         mArrayList = new ArrayList<>();
         mAdapter.setArrayListWord(mArrayList);
         lvWord.setAdapter(mAdapter);
@@ -53,6 +58,12 @@ public class ReplaceValueFragment extends Fragment {
     public void onPause() {
         super.onPause();
         mBusProvider.unregister(this);
+    }
+
+    @Subscribe
+    public void onReceiverArrayListWord(BusWord event) {
+        Log.d("xxx", "Nhan WordLists: " + event.getWord());
+        mWord = event.getWord();
     }
 
     @Click({R.id.tvReplaceValue, R.id.tvBinToMain})
@@ -72,6 +83,8 @@ public class ReplaceValueFragment extends Fragment {
     }
 
     private void replaceValue() {
-
+        if (mWord != null) {
+            mWord.setName(mArrWord[mWord.getId()]);
+        }
     }
 }

@@ -9,8 +9,8 @@ import android.widget.ListView;
 
 import com.squareup.otto.Produce;
 import com.tuanna.otto_lombokdemo.adapter.ListWordAdapter;
-import com.tuanna.otto_lombokdemo.bus.BusArrayListWord;
 import com.tuanna.otto_lombokdemo.bus.BusProvider;
+import com.tuanna.otto_lombokdemo.bus.BusWord;
 import com.tuanna.otto_lombokdemo.common.Word;
 
 import org.androidannotations.annotations.AfterViews;
@@ -67,15 +67,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @ItemClick
-    void lvWordItemClicked() {
-        mBusProvider.post(produceArrayListWord());
+    void lvWordItemClicked(Word word) {
+        mBusProvider.post(produceWord(word));
     }
 
     @Produce
-    public BusArrayListWord produceArrayListWord() {
-        if (mArrayList.size() > 0) {
-            return new BusArrayListWord(mArrayList);
-        }
-        return null;
+    public BusWord produceWord(Word word) {
+        return new BusWord(word);
     }
 }
