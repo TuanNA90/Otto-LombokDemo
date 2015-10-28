@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ Copyright (c) 2015. By tuanna (Jackson Nguyen)                            ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+<resources>
+    <string-array name="arrPhonetics">
+        <item>/ə'baid/</item>
+        <item>/ə'gri:mənt/</item>
+        <item>/ə'ʃuərəns/</item>
+        <item>/,kænse'leiʃn/</item>
+        <item>/di'tə:min/</item>
+        <item>/in'geidʤ/</item>
+        <item>/is'tæbliʃ/</item>
+        <item>/'ɔbligeit/</item>
+        <item>/'pɑ:ti/</item>
+        <item>/ri'zɔlv/</item>
+    </string-array>
+</resources>

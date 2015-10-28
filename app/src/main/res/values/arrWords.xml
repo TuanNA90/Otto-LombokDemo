@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ Copyright (c) 2015. By tuanna (Jackson Nguyen)                            ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+<resources>
+    <string-array name="arrWords" >
+        <item>abide by</item>
+        <item>agreement</item>
+        <item>assurance</item>
+        <item>cancellation</item>
+        <item>determine</item>
+        <item>engage</item>
+        <item>establish</item>
+        <item>obligate</item>
+        <item>party</item>
+        <item>resolve</item>
+    </string-array>
+</resources>
