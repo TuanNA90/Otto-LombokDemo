@@ -11,7 +11,9 @@ import android.util.Log;
 import android.widget.ListView;
 
 import com.squareup.otto.Produce;
+import com.squareup.otto.Subscribe;
 import com.tuanna.otto_lombokdemo.adapter.ListWordAdapter;
+import com.tuanna.otto_lombokdemo.bus.BusArrayListWord;
 import com.tuanna.otto_lombokdemo.bus.BusProvider;
 import com.tuanna.otto_lombokdemo.bus.BusWord;
 import com.tuanna.otto_lombokdemo.common.Word;
@@ -55,6 +57,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         mBusProvider.unregister(this);
+    }
+
+    @Subscribe
+    public void onReceiverArrayListWord(BusArrayListWord event) {
+        Log.d("xxx", "Nhan WordLists: " + event.getWordArrayList());
+        if (event.getWordArrayList().size() > 0) {
+            mArrayList.clear();
+            mArrayList.addAll(event.getWordArrayList());
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
     private void setData() {

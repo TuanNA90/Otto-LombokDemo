@@ -40,6 +40,8 @@ public class ReplaceValueFragment extends Fragment {
     ListView lvWord;
     @ViewById(R.id.tvBinToMain)
     TextView tvBinToMain;
+    @ViewById(R.id.tvReplaceValue)
+    TextView tvReplaceValue;
 
     private ArrayList<Word> mArrayList;
     private String[] mArrWord;
@@ -77,6 +79,7 @@ public class ReplaceValueFragment extends Fragment {
             case R.id.tvReplaceValue:
                 replaceValue();
                 tvBinToMain.setVisibility(View.VISIBLE);
+                tvReplaceValue.setVisibility(View.GONE);
                 break;
             case R.id.tvBinToMain:
                 binToMain();
@@ -86,6 +89,7 @@ public class ReplaceValueFragment extends Fragment {
 
     private void binToMain() {
         mBusProvider.post(produceArrayListWord());
+        getActivity().onBackPressed();
     }
 
     private void replaceValue() {
