@@ -75,11 +75,12 @@ public class MainActivity extends AppCompatActivity {
         this.mWord = word;
         Log.d("xxx", "Word: " + mWord.getId());
         mBusProvider.post(produceBusWord());
-
+        addFragment(ReplaceValueFragment_.builder().build());
     }
 
     /**
      * Method add new Fragment
+     *
      * @param fragment parameter of fragment insert into
      */
     public void addFragment(Fragment fragment) {
