@@ -84,6 +84,7 @@ public class ReplaceValueFragment extends Fragment {
 
     private void replaceValue() {
         if (mWord != null) {
+            int id = mWord.getId();
             mWord.setName(mArrWord[mWord.getId()]);
         }
     }

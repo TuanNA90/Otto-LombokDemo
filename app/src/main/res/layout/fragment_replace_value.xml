@@ -25,11 +25,18 @@
         android:padding="@dimen/activity_vertical_margin"
         android:text="@string/replace_value"/>
 
+    <ListView
+        android:id="@+id/lvWord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvReplaceValue"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"/>
+
     <TextView
         android:id="@+id/tvBinToMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvReplaceValue"
+        android:layout_below="@+id/lvWord"
         android:layout_centerHorizontal="true"
         android:background="@drawable/bg_button_selector"
         android:gravity="center_horizontal"
