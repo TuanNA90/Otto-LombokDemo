@@ -4,7 +4,10 @@
 
 package com.tuanna.otto_lombokdemo;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.squareup.otto.Produce;
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         mArrayList = new ArrayList<>();
         mAdapter.setArrayListWord(mArrayList);
         lvWord.setAdapter(mAdapter);
+        lvWord.setDivider(null);
         setData();
     }
 
@@ -55,24 +59,43 @@ public class MainActivity extends AppCompatActivity {
 
     private void setData() {
         for (int i = 0; i < 10; i++) {
-            mWord = Word.builder()
+            Word w = Word.builder()
                     .id(i)
-                    .name("Wor " + i)
+                    .name("Word " + i)
                     .phonetic("This is Word " + i)
                     .meaning("")
                     .build();
-            mArrayList.add(mWord);
+            mArrayList.add(w);
         }
         mAdapter.notifyDataSetChanged();
     }
 
     @ItemClick
     void lvWordItemClicked(Word word) {
-        mBusProvider.post(produceWord(word));
+        this.mWord = word;
+        Log.d("xxx", "Word: " + mWord.getId());
+        mBusProvider.post(produceBusWord());
+
+    }
+
+    /**
+     * Method add new Fragment
+     * @param fragment parameter of fragment insert into
+     */
+    public void addFragment(Fragment fragment) {
+        if (fragment != null) {
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.setCustomAnimations(
+                    android.R.anim.slide_in_left, android.R.anim.slide_out_right,
+                    android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+            fragmentTransaction.replace(R.id.container, fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        }
     }
 
     @Produce
-    public BusWord produceWord(Word word) {
-        return new BusWord(word);
+    public BusWord produceBusWord() {
+        return new BusWord(mWord);
     }
 }

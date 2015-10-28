@@ -85,7 +85,21 @@ public class ReplaceValueFragment extends Fragment {
     private void replaceValue() {
         if (mWord != null) {
             int id = mWord.getId();
-            mWord.setName(mArrWord[mWord.getId()]);
+            for (int i = 0; i < 10; i++) {
+                String name = "Wor " + i;
+                if (i == id) {
+                    name = "* " + mArrWord[i];
+                }
+                mWord = Word.builder()
+                        .id(i)
+                        .name(name)
+                        .phonetic("This is Word " + i)
+                        .meaning("")
+                        .build();
+
+                mArrayList.add(mWord);
+            }
+            mAdapter.notifyDataSetChanged();
         }
     }
 }
