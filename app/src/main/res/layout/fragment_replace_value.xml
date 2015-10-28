@@ -42,6 +42,7 @@
         android:background="@drawable/bg_button_selector"
         android:gravity="center_horizontal"
         android:padding="@dimen/activity_vertical_margin"
-        android:text="@string/bin_to_main"/>
+        android:text="@string/bin_to_main"
+        android:visibility="gone"/>
 
 </RelativeLayout>

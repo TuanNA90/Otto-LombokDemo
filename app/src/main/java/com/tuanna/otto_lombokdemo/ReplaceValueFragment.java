@@ -8,9 +8,12 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.squareup.otto.Produce;
 import com.squareup.otto.Subscribe;
 import com.tuanna.otto_lombokdemo.adapter.ListWordAdapter;
+import com.tuanna.otto_lombokdemo.bus.BusArrayListWord;
 import com.tuanna.otto_lombokdemo.bus.BusProvider;
 import com.tuanna.otto_lombokdemo.bus.BusWord;
 import com.tuanna.otto_lombokdemo.common.Word;
@@ -35,6 +38,8 @@ public class ReplaceValueFragment extends Fragment {
     ListWordAdapter mAdapter;
     @ViewById(R.id.lvWord)
     ListView lvWord;
+    @ViewById(R.id.tvBinToMain)
+    TextView tvBinToMain;
 
     private ArrayList<Word> mArrayList;
     private String[] mArrWord;
@@ -71,6 +76,7 @@ public class ReplaceValueFragment extends Fragment {
         switch (view.getId()) {
             case R.id.tvReplaceValue:
                 replaceValue();
+                tvBinToMain.setVisibility(View.VISIBLE);
                 break;
             case R.id.tvBinToMain:
                 binToMain();
@@ -79,7 +85,7 @@ public class ReplaceValueFragment extends Fragment {
     }
 
     private void binToMain() {
-
+        mBusProvider.post(produceArrayListWord());
     }
 
     private void replaceValue() {
@@ -101,5 +107,10 @@ public class ReplaceValueFragment extends Fragment {
             }
             mAdapter.notifyDataSetChanged();
         }
+    }
+
+    @Produce
+    public BusArrayListWord produceArrayListWord() {
+        return new BusArrayListWord(mArrayList);
     }
 }
