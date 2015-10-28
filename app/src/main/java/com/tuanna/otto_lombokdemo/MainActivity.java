@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import com.tuanna.otto_lombokdemo.adapter.ListWordAdapter;
+import com.tuanna.otto_lombokdemo.bus.BusProvider;
 import com.tuanna.otto_lombokdemo.common.Word;
 
 import org.androidannotations.annotations.AfterViews;
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     ListView lvWord;
     @Bean
     ListWordAdapter mAdapter;
+    @Bean
+    BusProvider mBusProvider;
 
     private ArrayList<Word> mArrayList;
     private Word mWord;
@@ -34,6 +37,18 @@ public class MainActivity extends AppCompatActivity {
         mAdapter.setArrayListWord(mArrayList);
         lvWord.setAdapter(mAdapter);
         setData();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mBusProvider.register(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mBusProvider.unregister(this);
     }
 
     private void setData() {
@@ -50,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @ItemClick
-    void lvWordItemClicked(Word word){
+    void lvWordItemClicked(Word word) {
+//        mBusProvider.post();
     }
 }
